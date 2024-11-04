@@ -1,4 +1,4 @@
-﻿$Path = '\windows\LTSvc'
+﻿$Path = 'C:\Windows\LTSvc'
 
 $FileFilter = '*'  
 
