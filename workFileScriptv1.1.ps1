@@ -13,6 +13,8 @@ Get-ChildItem -Path $labagentKey -Recurse -ErrorAction Ignore > ./Autotemp/baseL
 
 }
 
+getReg
+ltWatch
 #function monitor file 
 
 function ltWatch{
@@ -122,7 +124,7 @@ finally
 
 }
 
-getReg
+
 
 #Monitor for JanusError
 
@@ -132,8 +134,7 @@ getReg
 $janErr = 0 
 
 do{
-  #run function
-  ltWatch
+ 
   if($File = Get-Content -Path "C:\windows\ltsvc\LTError.txt" -Tail 25 | ForEach-Object{ $_.Trim() } | Where-Object {$_.Contains($searchStr.Trim())}){
   ++$janErr
 }
