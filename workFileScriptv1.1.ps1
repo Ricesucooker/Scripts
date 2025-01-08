@@ -6,8 +6,8 @@ $Path = 'C:\Windows\LTSvc'
 
 #section to get registry 
 function getReg{
-$labKey = "HKLM:\SOFTWARE\LABTECH"
-$labagentKey = "HKLM:\SOFTWARE\LABTECH\SERVICE"
+$labKey = "HKLM:\SOFTWARE\\SOFTWARE\LabTech\"
+$labagentKey = "HKLM:\SOFTWARE\\SOFTWARE\LabTech\Service"
 Get-ChildItem -Path $KeyLab -Recurse -ErrorAction Ignore > ./Autotemp/baseLTkey$timeStamp.txt
 Get-ChildItem -Path $labagentKey -Recurse -ErrorAction Ignore > ./Autotemp/baseLTkey$timeStamp.txt
 
@@ -119,13 +119,8 @@ finally
   
   Write-Warning "Event Handler disabled, monitoring ends."
 
-  Stop-Transcript
+  
 }
-
-}
-
-
-
 #Monitor for JanusError
 
 
@@ -155,4 +150,9 @@ Unblock-File -Path $downloadPath
 Start-Process -FilePath $downloadPath -Verb RunAs
 
 getReg
+Stop-Transcript
 }
+}
+
+
+
