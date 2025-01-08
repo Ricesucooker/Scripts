@@ -12,7 +12,7 @@ $AttributeFilter = [IO.NotifyFilters]::FileName, [IO.NotifyFilters]::LastWrite
 $labKey = "HKLM:\SOFTWARE\LabTech\"
 $labagentKey = "HKLM:\SOFTWARE\LabTech\Service"
 Get-ChildItem -Path $KeyLab -Recurse -ErrorAction Ignore > .\Autotemp\baseLTkey$timeStamp.txt
-Get-ChildItem -Path $labagentKey -Recurse -ErrorAction Ignore > .\Autotemp\baseLTkey$timeStamp.txt
+Get-ChildItem -Path $labagentKey -Recurse -ErrorAction Ignore > .\Autotemp\baseLTAgentkey$timeStamp.txt
 
 Start-Transcript Start-Transcript -Path $autoTempFile -Append
 
@@ -109,6 +109,5 @@ finally
  
   
   Write-Warning "Event Handler disabled, monitoring ends."
-
   
 }
