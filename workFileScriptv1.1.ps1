@@ -1,16 +1,18 @@
-$autoTempFile = New-Item  -Path "./Autotemp/tmpLog$(get-date -f yyyy-MM-dd).txt" -ItemType File -Force -Value "LTSvc folder events: "
+$timeStamp = Get-Date -Format o | ForEach-Object { $_ -replace ":", "." }
+
+$autoTempFile = New-Item  -Path "./Autotemp/tmpLog$timeStamp.txt" -ItemType File -Force -Value "LTSvc folder events: "
 
 $Path = 'C:\Windows\LTSvc'
 
 #section to get registry 
-
+function getReg{
 $labKey = "HKLM:\SOFTWARE\LABTECH"
 $labagentKey = "HKLM:\SOFTWARE\LABTECH\SERVICE"
+Get-ChildItem -Path $KeyLab -Recurse -ErrorAction Ignore > baseLTkey$timeStamp.txt
+Get-ChildItem -Path $labagentKey -Recurse -ErrorAction Ignore > baseLTkey$timeStamp.txt
 
-Get-ChildItem -Path $KeyLab -Recurse
-Get-ChildItem -Path $labagentKey -Recurse
+}
 
-.
 #function monitor file 
 
 function ltWatch{
@@ -120,7 +122,7 @@ finally
 
 }
 
-
+getReg
 
 #Monitor for JanusError
 
@@ -144,11 +146,12 @@ do{
 if($janErr -eq 5){
 
 $downloadURL = "https://utilities.itsupport247.net/pstautomation/CWAutoLogCollector.exe"
-$downloadPath = "~/Autotemp/CWAutoLogCollector.exe"
+$downloadPath = "./Autotemp/CWAutoLogCollector.exe"
 $unblockURL = $downloadPath
 
 Invoke-WebRequest -Uri $downloadURL -OutFile $downloadPath
 Unblock-File -Path $downloadPath
 Start-Process -FilePath $downloadPath -Verb RunAs
 
+getReg
 }
