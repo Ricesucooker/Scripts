@@ -3,9 +3,10 @@
 [String]$searchStr = "Janus error"
 $janErr = 0 
 
-
+Write-Host "looking for error string"
 #check for janus loop
 do{
+  Write-Host "..."
   if($File = Get-Content -Path "C:\windows\ltsvc\LTError.txt" -Tail 25 | ForEach-Object{ $_.Trim() } | Where-Object {$_.Contains($searchStr.Trim())}){
   ++$janErr
 }

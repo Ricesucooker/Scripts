@@ -14,7 +14,7 @@ $labagentKey = "HKLM:\SOFTWARE\LabTech\Service"
 Get-ChildItem -Path $KeyLab -Recurse -ErrorAction Ignore > .\Autotemp\baseLTkey$timeStamp.txt
 Get-ChildItem -Path $labagentKey -Recurse -ErrorAction Ignore > .\Autotemp\baseLTAgentkey$timeStamp.txt
 
-Start-Transcript Start-Transcript -Path $autoTempFile -Append
+Start-Transcript  -Path $autoTempFile -Append
 
 try
 {
