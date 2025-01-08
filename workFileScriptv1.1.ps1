@@ -2,6 +2,8 @@ $autoTempFile = New-Item  -Path "./Autotemp/tmpLog$(get-date -f yyyy-MM-dd).txt"
 
 $Path = 'C:\Windows\LTSvc'
 
+#function monitor file 
+
 function ltWatch{
 
 $FileFilter = '*'  
@@ -109,6 +111,25 @@ finally
 
 }
 
+
+
+
+#run function
+
 ltWatch
 
+
+
+
+
+
+#note for scripts 
+
+#section to get registry 
+
+$labKey = "HKLM:\SOFTWARE\LABTECH"
+$labagentKey = "HKLM:\SOFTWARE\LABTECH\SERVICE"
+
+Get-ChildItem -Path $KeyLab -Recurse
+Get-ChildItem -Path $labagentKey -Recurse
 
