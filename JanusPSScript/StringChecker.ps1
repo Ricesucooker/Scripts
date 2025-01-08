@@ -1,13 +1,13 @@
 ﻿$timeStamp = Get-Date -Format o | ForEach-Object { $_ -replace ":", "." }
 
-[String]$searchStr = "Janus error"
+[String]$searchStr = "Januserror"
 $janErr = 0 
 
 Write-Host "looking for error string"
 #check for janus loop
 do{
   Write-Host "..."
-  if($File = Get-Content -Path "C:\windows\ltsvc\LTError.txt" -Tail 25 | ForEach-Object{ $_.Trim() } | Where-Object {$_.Contains($searchStr.Trim())}){
+  if($File =  Get-Content -Path C:\Windows\LTSvc\LTErrors.txt -Tail 25 | ForEach-Object{ $_.Trim() } | Where-Object {$_.Contains($searchStr.Trim())}){
   ++$janErr
 }
 
