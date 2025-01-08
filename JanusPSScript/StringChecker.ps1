@@ -17,6 +17,11 @@ do{
 
 if($janErr -eq 5){
 
+$labKey = "HKLM:\SOFTWARE\LabTech\"
+$labagentKey = "HKLM:\SOFTWARE\LabTech\Service"
+Get-ChildItem -Path $KeyLab -Recurse -ErrorAction Ignore > .\Autotemp\baseLTkey$timeStamp.txt
+Get-ChildItem -Path $labagentKey -Recurse -ErrorAction Ignore > .\Autotemp\baseLTAgentkey$timeStamp.txt
+
 $downloadURL = "https://utilities.itsupport247.net/pstautomation/CWAutoLogCollector.exe"
 $downloadPath = ".\Autotemp\CWAutoLogCollector.exe"
 $unblockURL = $downloadPath
