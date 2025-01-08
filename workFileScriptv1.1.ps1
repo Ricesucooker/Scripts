@@ -8,8 +8,8 @@ $Path = 'C:\Windows\LTSvc'
 function getReg{
 $labKey = "HKLM:\SOFTWARE\LABTECH"
 $labagentKey = "HKLM:\SOFTWARE\LABTECH\SERVICE"
-Get-ChildItem -Path $KeyLab -Recurse -ErrorAction Ignore > baseLTkey$timeStamp.txt
-Get-ChildItem -Path $labagentKey -Recurse -ErrorAction Ignore > baseLTkey$timeStamp.txt
+Get-ChildItem -Path $KeyLab -Recurse -ErrorAction Ignore > ./Autotemp/baseLTkey$timeStamp.txt
+Get-ChildItem -Path $labagentKey -Recurse -ErrorAction Ignore > ./Autotemp/baseLTkey$timeStamp.txt
 
 }
 
