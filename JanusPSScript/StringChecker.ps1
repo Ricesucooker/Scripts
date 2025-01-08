@@ -6,7 +6,6 @@ $janErr = 0
 Write-Host "looking for error string"
 #check for janus loop
 do{
-  Write-Host "..."
   if($File =  Get-Content -Path C:\Windows\LTSvc\LTErrors.txt -Tail 25 | ForEach-Object{ $_.Trim() } | Where-Object {$_.Contains($searchStr.Trim())}){
   ++$janErr
 }
