@@ -1,6 +1,6 @@
 ﻿$timeStamp = Get-Date -Format o | ForEach-Object { $_ -replace ":", "." }
 
-[String]$searchStr = "Janus.Cryptography.RemoteAgentSettingsCrypt"
+[String]$searchStr = "Janus.Cryptography.RemoteAgentSettingsCrypto"
 $janErr = 0 
 
 Write-Host "looking for error string"
