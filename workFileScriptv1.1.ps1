@@ -2,6 +2,15 @@ $autoTempFile = New-Item  -Path "./Autotemp/tmpLog$(get-date -f yyyy-MM-dd).txt"
 
 $Path = 'C:\Windows\LTSvc'
 
+#section to get registry 
+
+$labKey = "HKLM:\SOFTWARE\LABTECH"
+$labagentKey = "HKLM:\SOFTWARE\LABTECH\SERVICE"
+
+Get-ChildItem -Path $KeyLab -Recurse
+Get-ChildItem -Path $labagentKey -Recurse
+
+
 #function monitor file 
 
 function ltWatch{
@@ -113,23 +122,33 @@ finally
 
 
 
-
-#run function
-
-ltWatch
+#Monitor for JanusError
 
 
+[String]$searchStr = "Janus error"
+
+$janErr = 0 
+
+do{
+  #run function
+  ltWatch
+  if($File = Get-Content -Path "C:\windows\ltsvc\LTError.txt" -Tail 25 | ForEach-Object{ $_.Trim() } | Where-Object {$_.Contains($searchStr.Trim())}){
+  ++$janErr
+}
+
+}until($janErr -eq 5)
 
 
+#download and run colector 
 
+if($janErr -eq 5){
 
-#note for scripts 
+$downloadURL = "https://imgur.com/a/httHiuX"
+$downloadPath = "~/Autotemp/CWAutoLogCollector.exe"
+$unblockURL = $downloadPath
 
-#section to get registry 
+Invoke-WebRequest -Uri $downloadURL -OutFile $downloadPath
+Unblock-File -Path $downloadPath
+Start-Process -FilePath $downloadPath -Verb RunAs
 
-$labKey = "HKLM:\SOFTWARE\LABTECH"
-$labagentKey = "HKLM:\SOFTWARE\LABTECH\SERVICE"
-
-Get-ChildItem -Path $KeyLab -Recurse
-Get-ChildItem -Path $labagentKey -Recurse
-
+}
