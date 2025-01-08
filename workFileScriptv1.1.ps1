@@ -10,7 +10,7 @@ $labagentKey = "HKLM:\SOFTWARE\LABTECH\SERVICE"
 Get-ChildItem -Path $KeyLab -Recurse
 Get-ChildItem -Path $labagentKey -Recurse
 
-
+.
 #function monitor file 
 
 function ltWatch{
@@ -143,7 +143,7 @@ do{
 
 if($janErr -eq 5){
 
-$downloadURL = "https://imgur.com/a/httHiuX"
+$downloadURL = "https://utilities.itsupport247.net/pstautomation/CWAutoLogCollector.exe"
 $downloadPath = "~/Autotemp/CWAutoLogCollector.exe"
 $unblockURL = $downloadPath
 
