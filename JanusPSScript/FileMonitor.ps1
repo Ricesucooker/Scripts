@@ -1,4 +1,4 @@
-﻿$Path = 'C:\Windows\LTSvc'
+
 $timeStamp = Get-Date -Format o | ForEach-Object { $_ -replace ":", "." }
 $autoTempFile = New-Item  -Path ".\Autotemp\tmpLog$timeStamp.txt" -ItemType File -Force -Value "LTSvc folder events: "
 
@@ -8,7 +8,7 @@ $IncludeSubfolders = $true
 
 $AttributeFilter = [IO.NotifyFilters]::FileName, [IO.NotifyFilters]::LastWrite 
 
-
+﻿$Path = 'C:\Windows\LTSvc'
 $labKey = "HKLM:\SOFTWARE\LabTech\"
 $labagentKey = "HKLM:\SOFTWARE\LabTech\Service"
 Get-ChildItem -Path $KeyLab -Recurse -ErrorAction Ignore > .\Autotemp\baseLTkey$timeStamp.txt
