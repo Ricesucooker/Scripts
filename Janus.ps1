@@ -3,13 +3,13 @@ New-Item -ItemType "directory" -Path "C:\AutoJanuslog"
 [String]$searchStr = "Janus.Cryptography.RemoteAgentSettingsCrypto"
  
 
-#$oldlogFile = "C:\Windows\LTSvc\LTErrorsold.txt"
-#$newlogFile = "C:\Windows\LTSvc\LTErrors.txt"
+$oldlogFile = "C:\Windows\LTSvc\LTErrorsold.txt"
+$newlogFile = "C:\Windows\LTSvc\LTErrors.txt"
 
 
 
-$oldlogFile = "C:\Users\LTAdmin\tempauto\testing\LTErrorsold.txt"
-$newlogFile = "C:\Users\LTAdmin\tempauto\testing\LTErrors.txt"
+#$oldlogFile = "C:\Users\LTAdmin\tempauto\testing\LTErrorsold.txt"
+#$newlogFile = "C:\Users\LTAdmin\tempauto\testing\LTErrors.txt"
 
 
 if ( Get-Content -Path $oldlogFile -Head 25 | ForEach-Object{ $_.Trim() } | Where-Object {$_.Contains($searchStr.Trim())} ){ Write-Host "True see top 25 Janus found skip" | Write-Output }
