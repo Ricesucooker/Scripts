@@ -24,7 +24,7 @@ mkdir -p "./$var_Hostname/Agent"
 ltFolder="/usr/local/ltechagent"
 rsync -r --exclude 'uninstaller.sh' --exclude 'libltech.so' --exclude 'ltechagent' --exclude 'ltupdate' "$ltFolder/." "./$var_Hostname/Agent"
 
-echo "comepleted collecting agent folder"
+echo "completed collecting agent folder"
 sleep 1
 
 journalctl > "./$var_Hostname/Journalctl.txt"
@@ -46,6 +46,6 @@ echo "compress completed"
 
 rm -rf ./$var_Hostname
 
-echo "exiting the script in 3 second..."
+echo "exiting the script in 3 seconds..."
 sleep 3
 
