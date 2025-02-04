@@ -1,4 +1,4 @@
-#script created by woraphong mingong
+#script created by Woraphong Mingsong
 #! /bin/bash
 
 var_Hostname=$(hostname)
