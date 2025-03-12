@@ -8,7 +8,7 @@ $IncludeSubfolders = $true
 
 $AttributeFilter = [IO.NotifyFilters]::FileName, [IO.NotifyFilters]::LastWrite 
 
-﻿$Path = 'C:\Windows\LTSvc'
+$ltPath = 'C:\Windows\LTSvc'
 $labKey = "HKLM:\SOFTWARE\LabTech\"
 $labagentKey = "HKLM:\SOFTWARE\LabTech\Service"
 Get-ChildItem -Path $KeyLab -Recurse -ErrorAction Ignore > .\Autotemp\baseLTkey$timeStamp.txt
@@ -19,7 +19,7 @@ Start-Transcript -Path $autoTempFile -Append
 try
 {
   $watcher = New-Object -TypeName System.IO.FileSystemWatcher -Property @{
-    Path = $Path
+    Path = $ltPath
     Filter = $FileFilter
     IncludeSubdirectories = $IncludeSubfolders
     NotifyFilter = $AttributeFilter
@@ -77,7 +77,7 @@ try
 
   $watcher.EnableRaisingEvents = $true
 
-  Write-Host "Watching for changes to $Path"
+  Write-Host "Watching for changes to $ltPath"
 
   do
   {
